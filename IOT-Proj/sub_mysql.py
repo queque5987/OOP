@@ -59,20 +59,18 @@ def on_message(client, userdata, msg):
     global sum_memtotal
     global sum_memusage
     global sample_max
-#    global cpu_use, mem_use
+#   global cpu_use, mem_use
     
     try:    
         count +=1
         payload_string = msg.payload.decode('utf-8')
         print("{:d} Topic: {}. Payload: {}".format(count, msg.topic, payload_string))
     
-        row_data = payload_string.split(",")
+        row_data = payload_string.split(",") # row_data = cpu temp, cpu use, mem total, mem use
 #        print("row_data = {}".format(row_data))
-#       row_data = cpu temp, cpu use, mem total, mem use
 
         rec_time = datetime.strptime(row_data[0], "%Y-%m-%d %H:%M:%S.%f")
         sub_data = float(row_data[1])
-
         sub_cpuusage = float(row_data[2])
         sub_memtotal = float(row_data[3])
         sub_memusage = float(row_data[4])
@@ -102,7 +100,7 @@ def on_message(client, userdata, msg):
 #            print("str data = {0}".format(str_data))
             pushData2DB(rec_time, str_data)
             sample_count = 0
-            sum_data = 0
+            sum_data = 0.0
             sum_cpuusage = 0.0
             sum_memtotal = 0.0
             sum_memusage = 0.0
