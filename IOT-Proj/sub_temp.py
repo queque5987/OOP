@@ -29,7 +29,18 @@ def on_message(client, userdata, msg):
         count +=1
         payload_string = msg.payload.decode('utf-8')
         print("{:d} Topic: {}. Payload: {}".format(count, msg.topic, payload_string))
-        
+        date = ""
+        data = ""
+        isDate = True
+        for i in payload_string:
+            if i == ",":
+                isDate = False
+                continue
+            if isDate:
+                date += i
+            else:
+                data += i
+        print("{:d} DATE : {}, DATA : {}".format(count, date, data))
     except Exception as e:
         print ("Exception", e)
 

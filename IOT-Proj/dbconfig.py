@@ -5,8 +5,8 @@ IP_ADDR = "59.8.166.130"
 #DIR_DATAPATH = os.path.join("D:", r"D:\home\project\medical\data")
 
 db_host = IP_ADDR
-db_name = 'root'
-db_user = 'root'
+db_name = 'mysql'
+db_user = 'qq'
 db_password = '5987'
 
 def setHost(host):

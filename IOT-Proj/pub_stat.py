@@ -53,7 +53,7 @@ def pubTempData(client, freq=10, limit=100):
 
 if __name__ == "__main__":
     print ("get client")
-    client = mqtt.Client("cputemp_table")
+    client = mqtt.Client("CPU_TEMP_PUB01")
     #client = mqtt.Client()
     client.username_pw_set(user, password=password)
     client.on_connect = on_connect
