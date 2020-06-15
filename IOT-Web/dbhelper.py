@@ -29,7 +29,7 @@ class DBHelper:
             query1 = """insert cputemp_table 
             (temp_time, temp_data)
             values (%s, %s); """
-            cursor = conn.cursor()
+            cursor = conn.cursor(buffered = True)
             
             cursor.execute(query1, (tim, dat))
                 
@@ -46,7 +46,7 @@ class DBHelper:
             query1 = """insert resp_table 
             (dev_id, rec_time, resp_data)
             values (%s, %s); """
-            cursor = conn.cursor()
+            cursor = conn.cursor(buffered = True)
             
             for rec in recList:
                 tim = rec['rec_time']

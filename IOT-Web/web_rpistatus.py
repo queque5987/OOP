@@ -34,7 +34,7 @@ def home():
 
 @app.route("/statusplot/<num>")
 def statusplot(num):
-        
+    num = 20
     svg = ''
         
     if not session.get('uid'):
@@ -63,7 +63,7 @@ def statusplot(num):
     
     tempSvgFile = './static/temp/plot_%s.svg'%session['uid']
     plt.savefig(tempSvgFile, format='svg')
-    
+    plt.close('all')
     with open(tempSvgFile, 'rt', encoding='UTF8') as svgfile:
         svg = svgfile.read()
         #print ({'svg': svg})
@@ -75,6 +75,7 @@ def statusplot(num):
         pass
     #"""
     #return send_file('./static/price_plot.png', mimetype='image/png')
+
     return jsonify({'svg': svg})
     
     
