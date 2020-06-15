@@ -62,7 +62,8 @@ class DBHelper:
 
     def buildStatusDFFromDB(self, num=None):
         conn = self.connect()
-        cursor = conn.cursor()
+        # cursor = conn.cursor()
+        cursor = conn.cursor(buffered = True)
         
         try:
             #query = "select temp_time, temp_data from cputemp_table "
